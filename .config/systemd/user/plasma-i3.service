@@ -1,0 +1,12 @@
+[Install]
+WantedBy=plasma-workspace.target
+
+[Unit]
+Description=Plasma Custom Window Manager
+Before=plasma-workspace.target
+
+[Service]
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/i3
+Slice=session.slice 
+Restart=on-failure
