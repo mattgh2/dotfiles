@@ -12,6 +12,7 @@ vim.opt.swapfile = false
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.scrolloff = 8
 
@@ -43,6 +44,12 @@ vim.g.vimtex_compiler_latexmk = {
         '-interaction=nonstopmode',
     },
 }
+vim.g.vimtex_log_verbosity = 0
+vim.g.vimtex_quickfix_mode = 0
+
 vim.g.signcolumn = true
 vim.o.winblend = 20
 vim.o.pumblend = 20
+
+vim.o.timeoutlen = 50  -- Set timeoutlen to 200ms for faster key mappings
+vim.o.ttyfast = true

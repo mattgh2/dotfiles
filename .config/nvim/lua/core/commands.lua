@@ -1,12 +1,12 @@
 local build_commands = {
   c = "!g++ -std=c++17 -o %:p:r.o %",
-  cpp = "!g++ -std=c++17 -Wall -O2 -o %:p:r.o %",
+  cpp = "!g++ -std=c++23 -Wall -o %:p:r.o %",
   -- tex = "pdflatex %",
   tex = "VimtexCompile",
 }
 local debug_build_commands = {
-  c = "!g++ -std=c++17 -g -o %:p:r.o %",
-  cpp = "!g++ -std=c++17 -g -o %:p:r.o %",
+  c = "!g++ -std=c++20 -g -o %:p:r.o %",
+  cpp = "!g++ -std=c++23 -g -o %:p:r.o %",
 }
 
 vim.api.nvim_create_user_command("Build", function()
