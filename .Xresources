@@ -1,58 +1,39 @@
-! Colors (gruvbox)
-*background:  #282828
-*foreground:  #d4be98
-!black
-*color0:  #251f1f
-*color8:  #5e5e5e
-!red
-*color1:  #eb4509
-*color9:  #eb4509
-!green
-*color2:  #94e76b
-*color10: #95e76b
-!yellow
-*color3:  #ffac18
-*color11: #ffac18
-!blue
-*color4:  #46aede
-*color12: #46aede
-!magenta
-*color5:  #e32c57
-*color13: #e32c57
-!cyan
-*color6:  #d6dbac
-*color14: #d6dbac
-!white
-*color7:  #efefef
-*color15: #efefef
+! *.font: Terminus (TTF):pixelsize=14:antialias=true:hinting=true
+*.font: Monoid:pixelsize=12:antialias=true:hinting=true
+*.alpha: 0.9999999999
 
-!! Extensions:
-URxvt.perl-ext-common: default,matcher,resize-font,url-select,keyboard-select
-URxvt.colorUL: #4682B4
-!! url-select:
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.url-select.launcher: /usr/bin/librewolf
-URxvt.url-select.underline: True
-!! keyboard-select:
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-!! resize font
-URxvt.resize-font.smaller: C-j
-URxvt.resize-font.bigger: C-k
-!! matcher
-URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1
+/* !! xterm */
+*.color0:   #000000
+*.color1:   #cd0000
+*.color2:   #00cd00
+*.color3:   #cdcd00
+*.color4:   #0000cd
+*.color5:   #cd00cd
+*.color6:   #00cdcd
+*.color7:   #e5e5e5
+*.color8:   #4d4d4d
+*.color9:   #ff0000
+*.color10:  #00ff00
+*.color11:  #ffff00
+*.color12:  #5c5cff
+*.color13:  #ff00ff
+*.color14:  #00ffff
+*.color15:  #aabac8
 
-!! Font:
-URxvt*font: xft:Recursive:pixelsize=12:antialias=true:hinting=true
-
-!Scrollbar:
-URxvt.scrollBar: false
-URxvt.scrollBar_right: false 
-URxvt.scrollBar_floating: false 
-URxvt.scrollstyle: rxvt
-!! Scrollback:
-URxvt*saveLines: 16384
-
-! Transparency: (0-99 darkens, 101-200 lightens)
-! URxvt*transparent: true
-! URxvt*shading: 30
+/* ! base16 */
+! *.color0:       #303030
+! *.color1:       #ff5c57
+! *.color2:       #b8d68c
+! *.color3:       #ffd787
+! *.color4:       #87d7ff
+! *.color5:       #d8a4d8
+! *.color6:       #a8e2dc
+! *.color7:       #ffffff
+! *.color8:       #787878
+! *.color9:       #ff5c57
+! *.color10:      #b8d68c
+! *.color11:      #ffd787
+! *.color12:      #87d7ff
+! *.color13:      #d8a4d8
+! *.color14:      #a8e2dc
+! *.color15:      #ffffff

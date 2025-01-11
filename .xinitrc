@@ -1,18 +1,16 @@
-#!/bin/sh
+#! /bin/sh
+xrandr --output HDMI-0 --mode 2560x1440 --rate 100 --primary
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
 
-# Not needed here, placed in WM config instead (except for dwm)
-    picom&
-    nitrogen --restore &
-    xrandr --output HDMI-0 --primary --mode 1920x1080  --rate 165
-    dwmblocks 2>&1 > /dev/null &
-    # $HOME/polybar-collection/launch.sh &
+feh --bg-scale ~/wallpapers/g3.png &
+xrdb ~/.Xresources &
+picom --daemon &
+dwmblocks 2> /dev/null &
+ 
+xset s off &
+xset -dpms &
+otd-daemon &
 
-# Starts urxvt as a daemon, results in better startup time
-# urxvtd --quiet --opendisplay --fork
-
-# Load
-xrdb ~/.Xresources
-
-# WM 
-# exec bspwm
-exec dwm
+exec gentoo-pipewire-launcher &
+exec dbus-run-session dwm 
