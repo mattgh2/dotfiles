@@ -1,0 +1,328 @@
+snippet template
+\documentclass{report}
+
+\input{~/latex/template/preamble.tex}
+\input{~/latex/template/macros.tex}
+
+\title{\Huge{$1}}
+\author{\huge{Matt Warner}}
+\date{\huge{$2}}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{$3}
+\lhead{\leftmark}
+\cfoot{\thepage}
+% \usepackage[default]{sourcecodepro} \usepackage[T1]{fontenc}
+
+\pgfpagesdeclarelayout{boxed}
+{
+  \edef\pgfpageoptionborder{0pt}
+}
+{
+  \pgfpagesphysicalpageoptions
+  {%
+    logical pages=1,%
+  }
+  \pgfpageslogicalpageoptions{1}
+  {
+    border code=\pgfsetlinewidth{1.5pt}\pgfstroke,%
+    border shrink=\pgfpageoptionborder,%
+    resized width=.95\pgfphysicalwidth,%
+    resized height=.95\pgfphysicalheight,%
+    center=\pgfpoint{.5\pgfphysicalwidth}{.5\pgfphysicalheight}%
+  }%
+}
+
+\pgfpagesuselayout{boxed}
+
+\begin{document}
+	\maketitle
+
+
+\end{document}
+endsnippet
+snippet pset
+\begin{document}
+\input{~/latex/template/pset.tex}
+\input{~/latex/template/macros.tex}
+
+
+% envirmments:
+%   - homeworkProblem
+
+% commands
+%   - \partr (for roman)
+%   - \parta (for arabic)
+%   - \partal (for alpha)
+%   - \alg 
+%   - \deriv
+%   - \pderiv
+%   - \dx
+%   - \solution
+% Probability commands
+%   - \E
+%   - \Var
+%   - \Cov
+%   - \Bias
+
+\begin{document}
+% {HW NUMBER}{date}{class}{KEEP EMPTY}{prof}{\textbf{author}}
+\setHWinfo{2}{}{}{}{}{}
+
+\maketitle
+\newpage
+
+\end{document}
+endsnippet
+
+snippet line
+\line(1,0){490}
+endsnippet
+
+snippet box
+\begin{mdframed}
+	$1
+\end{mdframed}
+endsnippet
+
+snippet item
+\begin{itemize}
+	$1
+\end{itemize}
+endsnippet
+
+snippet mathsection
+\pagebreak \bigbreak \noindent
+\begin{Large}
+    \begin{mdframed}
+        \begin{center}
+            \textbf{$1}
+        \end{center}
+    \end{mdframed}
+\end{Large}
+\begin{Large}
+    \begin{center}
+        \textbf{$2}
+    \end{center}
+\end{Large}
+\line(1,0){490}
+
+\bigbreak \noindent \bigbreak \noindent \bigbreak \noindent 
+$3
+endsnippet
+
+snippet new 
+\begin{$1}
+  $2
+\end{$1}
+endsnippet
+snippet td "exponent" i
+^{$1}
+endsnippet
+
+# snippet mk "Math" iA
+# $${1}$`!p
+# if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+#    snip.rv = ''
+# else:
+#    snip.rv = ''
+# `$2
+# endsnippet
+
+# snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+# \\frac{`!p snip.rv = match.group(1)`}{$1}$0
+# endsnippet
+
+snippet // "Fraction" i
+\frac{$1}{$2}
+endsnippet
+
+
+snippet ali
+\begin{align*}
+	$1
+\end{align*}
+endsnippet
+
+snippet prob "problem"
+\line(1,0){450}
+
+\begin{center}
+\begin{large}
+
+\end{large}
+\end{center}
+
+\line(1,0){450}
+endsnippet
+
+snippet def "definition"
+\thmcon{
+	\textbf{\underline{Defintion}}
+	\vspace{3mm}
+
+	$1
+}
+endsnippet
+
+snippet ex "example"
+\ex{}{
+	$1
+}
+endsnippet
+
+snippet fig "figure"
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{ $1 }
+\end{figure}
+endsnippet
+
+snippet mat "matrix"
+\[
+
+\begin{bmatrix}
+	$1
+\end{bmatrix}
+\]
+endsnippet
+
+snippet ppset "problemset"
+\begin{problemset}{$1}
+\begin{align*}
+	$1 
+\end{align*}
+\end{problemset}
+endsnippet
+
+snippet mini "minipage"
+\begin{minipage}{0.5\textwidth}
+$1	
+\end{minipage}
+endsnippet
+
+snippet lim "limit"
+\displaystyle\lim_{$1}$2
+endsnippet
+
+snippet prule1
+\frac{d}{dx}[f(x) \cdot g(x)] = f(x) \frac{d}{dx}[g(x)] + g(x) \frac{d}{dx}[f(x)]
+endsnippet
+
+snippet prule2
+(f\cdot g)\prime = f \cdot g\prime + g \cdot f\prime
+endsnippet
+
+snippet prule3
+\frac{d}{dx}[f(x) \cdot g(x)] = 
+endsnippet
+
+snippet qrule1
+\frac{d}{dx}\bigg[ \frac{f(x)}{g(x)}\bigg] = \frac{g(x) \frac{d}{dx}[f(x)] - f(x) \frac{d}{dx}[g(x)]}{[g(x)]^2}
+endsnippet
+
+snippet qrule2
+\bigg(\frac{f}{g}\bigg)^{\prime} = \frac{g \cdot f ^{\prime} - f \cdot g ^{\prime}}{g^2}
+endsnippet
+
+snippet qrule3
+\frac{d}{dx} \bigg[\frac{f(x)}{g(x)}\bigg] =
+endsnippet
+
+snippet dx
+\frac{d}{dx}$1
+endsnippet
+
+snippet left
+\left($1\right)
+endsnippet
+
+snippet so
+\textit{\textbf{$1}}
+endsnippet
+
+snippet mathfig
+/home/mattw/niu/Math211/latexdocs/figures/$1
+endsnippet
+
+snippet h0
+H_0 : $1
+endsnippet
+
+snippet ha
+H_A : $1
+endsnippet
+
+snippet code
+\begin{mdframed}
+\begin{minted}{c++}
+$1
+\end{minted}
+\end{mdframed}
+endsnippet
+
+snippet gh
+\colorbox{lightgray}{$1}
+endsnippet
+
+snippet bb
+\bigbreak \noindent
+$1
+endsnippet
+
+snippet comsyn
+\bigbreak \noindent
+\textbf{\textit{Syntax:}}
+\begin{minted}{bash}
+$1
+\end{minted}
+endsnippet
+
+snippet bash
+\bigbreak \noindent
+\textbf{\underline{Example:}}
+\begin{mdframed}
+\begin{minted}{bash}
+$1
+\end{minted}
+\end{mdframed}
+endsnippet
+
+snippet itemize
+\begin{itemize}
+$1
+\end{itemize}
+endsnippet
+snippet subitem
+\begin{itemize}[label=$\circ$]
+$1
+\end{itemize}
+endsnippet
+snippet figpath
+~/Documents/figures/$1
+endsnippet
+snippet mint
+\begin{minted}[linenos=false]{$1}
+$2
+\end{minted}
+endsnippet
+snippet table
+    \begin{figure}[ht]
+    \centering
+     % \setlength{\tabcolsep}{30}
+    \begin{tabular}{c c c c}
+    $1
+    \end{tabular}
+    \end{figure}
+endsnippet
+snippet kw
+\texttt{$1}
+endsnippet
+snippet bf
+\textbf{$1}
+endsnippet
+
+
+
+
+

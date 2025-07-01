@@ -1,0 +1,32 @@
+snippet main
+cmake_minimum_required(VERSION 3.20.0)
+project($1) # Name whatever
+# add_executable($2) 
+
+include_directories()  # Libs (./src)
+add_subdirectory()  # Src Code (./src)
+
+# TESTS
+#add_subdirectory()  # Test dir
+# enable_testing() 
+endsnippet
+
+
+snippet sub
+
+add_executable() # Exe (main main.cpp)
+
+add_library() # Adds Lib (hello hello.cpp)
+
+target_link_libraries() # Links src files (main hello)
+
+# configure_file(example.txt ${CMAKE_CURRENT_BINARY_DIR}/example.txt COPYONLY) # for input files needed at runtime.
+endsnippet
+
+snippet tests
+add_subdirectory(/usr/src/googletest ../build/gtest)
+include(CTest)
+
+add_executable() # exe for test
+target_link_libraries() # (test_blah blah gtest gtest_main)
+endsnippet
