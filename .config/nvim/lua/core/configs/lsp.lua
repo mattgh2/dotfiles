@@ -1,5 +1,10 @@
 local lsp_zero = require('lsp-zero')
 
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+})
 lsp_zero.set_preferences({
     sign_icons = { }
 })
@@ -44,27 +49,32 @@ require('mason-lspconfig').setup({
                         },
                     }
                 }
-            end
 
+            end
             require('lspconfig')[server_name].setup(opts)
         end,
--- require ('lspconfig')['intelephense'].setup({
---  root_dir = function(fname)
---         return require('lspconfig.util').find_git_ancestor(fname)
---             or require('lspconfig.util').path.dirname(fname)
---     end,
---     settings = {
---         intelephense = {
---             stubs = {"bcmath", "bz2", "Core", "curl", "date", "dom", "fileinfo", "filter", "gd", "gettext", "hash", "iconv", "imap", "intl", "json", "libxml", "mbstring", "mcrypt", "mysql", "mysqli", "password", "pcntl", "pcre", "PDO", "pdo_mysql", "Phar", "readline", "regex", "session", "SimpleXML", "sockets", "sodium", "standard", "superglobals", "tokenizer", "xml", "xdebug", "xmlreader", "xmlwriter", "yaml", "zip", "zlib", "wordpress-stubs", "woocommerce-stubs", "acf-pro-stubs", "wordpress-globals", "wp-cli-stubs", "genesis-stubs", "polylang-stubs"},
---             environment = {
---                 includePaths = {'/home/mte90/.composer/vendor/php-stubs/', '/home/mte90/.composer/vendor/wpsyntex/'}
---             },
---             files = {
---                 maxSize = 5000000;
---             };
---         };
-    -- },
--- }),
+
+         ["ruff_lsp"] = function()
+            require('lspconfig').ruff_lsp.setup({
+                on_attach = function(client, bufnr)
+                    print("Ruff attached to buffer " .. bufnr)
+                    -- Example: attach virtual-types if needed
+                    -- require('virtualtypes').on_attach(client, bufnr)
+                    -- You can also set buffer-local keymaps here
+                end,
+                init_options = {
+                    settings = {
+                        -- Example: select only certain rules, or ignore some
+                        args = { "--select", "F401", "--fix", "E501" }
+                    }
+                },
+            })
+        end,
+
+        -- require('lspconfig').pylsp.setup {
+        --     on_attach = require('virtualtypes').on_attach,
+        -- }
+        
 }
 })
 

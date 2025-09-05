@@ -1,7 +1,6 @@
 -- 24-bit color
 vim.opt.termguicolors = true
 
-
 -- Some setting changes
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -53,3 +52,12 @@ vim.o.pumblend = 20
 
 vim.o.timeoutlen = 50  -- Set timeoutlen to 200ms for faster key mappings
 vim.o.ttyfast = true
+
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    globals = {'vim'},
+    update_in_insert = false,
+})
+

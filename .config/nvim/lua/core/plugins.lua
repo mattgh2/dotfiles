@@ -8,14 +8,14 @@ return require('packer').startup(function(use)
  use "SirVer/ultisnips"
 
  -- LaTeX Compiler
- use {
-     "lervag/vimtex",
- }
+  use  "lervag/vimtex"
 
 
-  -- Color scheme
+  -- TODO
+  use { 'jubnzv/virtual-types.nvim', }
+
+  -- COLOR SCHEMES
   use {"mattgithub2/cs.nvim"}
-
   use "hgoose/goose.vim"
   use {"morhetz/gruvbox"}
   use { "catppuccin/nvim", as = "catppuccin" }
@@ -40,7 +40,6 @@ return require('packer').startup(function(use)
   use { "LunarVim/onedarker.nvim"}
   use { "HoNamDuong/hybrid.nvim"}
   use { "yonlu/omni.vim"}
-  use { "fynnfluegge//monet.nvim"}
   use {"Abstract-IDE/Abstract-cs"}
   use { "miikanissi/modus-themes.nvim"}
   use { "nacq/better-default"}
@@ -53,6 +52,7 @@ return require('packer').startup(function(use)
   use { 'NLKNguyen/papercolor-theme' }
   use 'SebastianZaha/nvim-solar-paper'
   use "craftzdog/solarized-osaka.nvim"
+  use { "vim-scripts/DarkZen-Color-Scheme" }
   use({
       "neanias/everforest-nvim",
       -- Optional; default configuration will be used if setup isn't called.
@@ -60,45 +60,21 @@ return require('packer').startup(function(use)
           require("everforest").setup()
       end,
   })
-  use {
-      'maxmx03/fluoromachine.nvim',
-      require('fluoromachine').setup {
-          glow = false;
-      }
-  }
-  use {
-      "vim-scripts/DarkZen-Color-Scheme"
-  }
+
+
 
   use {"liangxianzhe/floating-input.nvim"}
-
-  use {
-      "0xstepit/flow.nvim",
-          require("flow").setup {
-              dark_theme = true,
-              transparent = false,
-              high_contrast = true,
-              fluo_color = "pink",
-              mode = "base",
-              aggressive_spell = false,
-          }
-  }
-  use {
-      "ferdinandrau/lavish.nvim"
-  }
-
 
   -- Mason
   use {
 	  "williamboman/mason.nvim"
   }
-
   -- Whichkey
   use {
 
 	  "folke/which-key.nvim",
-          -- vim.o.timeout = true
-          -- vim.o.timeoutlen = 300
+           --vim.o.timeout = true
+           --vim.o.timeoutlen = 300
           require("which-key").setup({
               win = {
                   border = "rounded",
@@ -109,44 +85,43 @@ return require('packer').startup(function(use)
           })
   }
 
+
   -- For auto saving in vim
   use "907th/vim-auto-save"
 
   -- status bar
-  -- use {'vim-airline/vim-airline'}
-  -- use {'vim-airline/vim-airline-themes'}
   use {
       'nvim-lualine/lualine.nvim',
       requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
   -- Treesitter
-  use {
-	  'nvim-treesitter/nvim-treesitter',
-	  run = ':TSUpdate',
-	  require('nvim-treesitter.configs').setup {
-
-	  -- A list of parser names, or "all"
-	  ensure_installed = { "php", "c", "cpp", "bash", "fish", "cmake", "lua", "vim", "vimdoc", "query" },
-
-	  sync_install = false,
-	  modules = {},
-	  ignore_install = {},
-	  auto_install = true,
-
-	  highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-	  },
-  	}
-
-  }
-
+  -- use {
+  --     'nvim-treesitter/nvim-treesitter',
+  --     run = ':TSUpdate',
+  --     require('nvim-treesitter.configs').setup {
+  --
+  --         -- A list of parser names, or "all"
+  --         ensure_installed = { "php", "c", "cpp", "bash", "fish", "cmake", "lua", "vim", "vimdoc", "query" },
+  --
+  --         sync_install = false,
+  --         modules = {},
+  --         ignore_install = {},
+  --         auto_install = true,
+  --
+  --         highlight = {
+  --             enable = true,
+  --             additional_vim_regex_highlighting = false,
+  --         },
+  --     }
+  --
+  -- }
+  --
   -- Parenthesis Highlighting
-  use {
-      "p00f/nvim-ts-rainbow",
-      after = "nvim-treesitter"
-  }
+  -- use {
+      -- "p00f/nvim-ts-rainbow",
+      -- after = "nvim-treesitter"
+  -- }
 
   -- FZF
   use {
@@ -159,8 +134,10 @@ return require('packer').startup(function(use)
                   enable_preview = true
               }
           }
-      }
-  }}
+     }
+  }
+  }
+
 
   -- Smarter Splits
   use('mrjones2014/smart-splits.nvim')
@@ -170,21 +147,10 @@ return require('packer').startup(function(use)
       'rcarriga/nvim-notify',
   }
 
-  -- LSP
-  use {
-      'VonHeikemen/lsp-zero.nvim',
-      branch = 'v3.x', requires = {
-          {'williamboman/mason-lspconfig.nvim'},
-
-          {'neovim/nvim-lspconfig'},
-          {'hrsh7th/nvim-cmp'},
-          {'hrsh7th/cmp-nvim-lsp'},
-          {'L3MON4D3/LuaSnip'},
-          {'onsails/lspkind.nvim'},
-      }
-  }
-
-  -- For commenting lines 
+  -- Auto Completions
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  -- For commenting lines  
   use {
       'numToStr/Comment.nvim',
       config = function()
@@ -256,7 +222,7 @@ dependencies = {
   -- Color Previews
   use {
 	  "uga-rosa/ccc.nvim",
-	  require('ccc').setup({
+	   require('ccc').setup({
 		  highlighter = {
 			  auto_enable = true,
 			  lsp = true,
@@ -266,20 +232,7 @@ dependencies = {
   use { "echasnovski/mini.icons"}
   use {
       "andrewferrier/wrapping.nvim",
-            require("wrapping").setup()
-  }
-  use {
-      "kawre/leetcode.nvim",
-      build = ":TSUpdate html",
-      dependencies = {
-          "nvim-telescope/telescope.nvim",
-          "nvim-lua/plenary.nvim", -- required by telescope
-          "MunifTanjim/nui.nvim",
-          -- optional
-          "nvim-treesitter/nvim-treesitter",
-          "nvim-tree/nvim-web-devicons",
-      },
-      require('leetcode').setup()
+             require("wrapping").setup()
   }
   use {
       'VonHeikemen/fine-cmdline.nvim',
@@ -287,4 +240,9 @@ dependencies = {
           {'MunifTanjim/nui.nvim'}
       },
   }
-end)
+  use {'Vigemus/iron.nvim'}
+
+  use "nvimtools/none-ls.nvim"
+  use "nvimtools/none-ls-extras.nvim"
+
+  end)
