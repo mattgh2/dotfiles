@@ -8,15 +8,13 @@ return {
         pylsp = {
             plugins = {
                 pyflakes = { enabled = true },
-                ruff = { enabled = true },  -- optional
-                -- pycodestyle = { enabled = true },
-                -- mccabe = { enabled = true },
-                -- yapf = { enabled = false },
+
+                pycodestyle = {
+                    ignore = { 'E501' },
+                },
+
             },
         },
     },
     capabilities = capabilities
-
-
-
 }
