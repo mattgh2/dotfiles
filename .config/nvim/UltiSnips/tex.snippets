@@ -1,3 +1,24 @@
+snippet notes
+\documentclass[letterpaper, 12pt]{article}
+
+\usepackage[table]{xcolor}
+\usepackage{multirow}
+
+\input{~/latex/template/notes_preamble.tex}
+\fancyhead[L]{\hyperref[sec:contents]{\small Short course title}}
+\begin{document}
+
+\title{$1}
+
+\author{\normalsize Matt Warner}
+\date{\normalsize\vspace{-1ex} Last updated: \today}
+
+
+\maketitle
+
+\tableofcontents\label{sec:contents}
+\end{document}
+endsnippet
 snippet template
 \documentclass{report}
 
@@ -299,7 +320,7 @@ $1
 \end{itemize}
 endsnippet
 snippet figpath
-/mnt/c/Users/mrpiz/Documents/$1
+/mnt/c/Users/mrpiz/Documents/figures/$1
 endsnippet
 snippet mint
 \begin{minted}[linenos=false]{$1}
@@ -320,6 +341,11 @@ snippet kw
 endsnippet
 snippet bf
 \textbf{$1}
+endsnippet
+snippet py
+\begin{pycode}
+$1
+\end{pycode}
 endsnippet
 
 
