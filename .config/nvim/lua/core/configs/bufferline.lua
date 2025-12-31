@@ -1,14 +1,13 @@
-
 local get_hex = require('cokeline.hlgroups').get_hl_attr
 
 require('cokeline').setup({
  show_if_buffers_are_at_least = 2,
   default_hl = {
     fg = function(buffer)
-      return
-        buffer.is_focused
-        and get_hex('Normal', '#000000')
-         or get_hex('Comment', 'fg')
+        if buffer.is_focused then 
+            return "#ffffff"
+        end
+        return get_hex("Comment","fg")
     end,
     bg = 'NONE',
   },

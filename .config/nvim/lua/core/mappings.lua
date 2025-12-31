@@ -8,15 +8,6 @@ vim.g.auto_save = 1
 vim.cmd("set conceallevel=1")
 -- vim.g.vimtex_quickfix_mode = 0
 -- vim.g.tex_conceal = 'abdmg'
---
-local function search_files_with_custom_cwd()
-  vim.ui.input({ prompt = 'Enter directory path: ' }, function(input)
-    if input then
-      -- Run Telescope find_files with the specified directory
-      require('telescope.builtin').find_files({ cwd = input })
-    end
-  end)
-end
 
 -- Which-key stuff
 local wk = require("which-key")
@@ -64,7 +55,7 @@ vim.api.nvim_set_keymap('n', '<C-l>', '<cmd>lua require("smart-splits").resize_r
 vim.api.nvim_set_keymap('n', '<A-k>', '<cmd>lua require("smart-splits").resize_up()<cr>', {silent = true})
 vim.api.nvim_set_keymap('n', '<A-j>', '<cmd>lua require("smart-splits").resize_down()<cr>', {silent = true})
  -- Moving between splits
- vim.api.nvim_set_keymap('n', '<A-f>', '<cmd>lua require("smart-splits").move_cursor_left()<cr>', {silent = true})
+vim.api.nvim_set_keymap('n', '<A-f>', '<cmd>lua require("smart-splits").move_cursor_left()<cr>', {silent = true})
 vim.api.nvim_set_keymap('n', '<A-g>', '<cmd>lua require("smart-splits").move_cursor_right()<cr>', {silent = true})
 
 -- Building Cpp
@@ -79,6 +70,19 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-s>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
-vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-CR>', ':Leet run<CR>', { noremap = true, silent = true })
+-- Ruff format mapping (leader `)
+vim.keymap.set("n", "<leader>`", function()
+  vim.lsp.buf.format({
+    filter = function(client)
+      return client.name == "ruff"
+    end,
+    timeout_ms = 2000,
+  })
+end, { desc = "Format Python with Ruff" })
 
+vim.keymap.set("n", "T", function()
+  vim.lsp.buf.type_definition()
+end, { desc = "Format Python with Ruff" })
+
+vim.api.nvim_set_keymap("n", "<Tab>", "<Plug>(cokeline-focus-next)", { silent = true })
+vim.api.nvim_set_keymap("n", "<S-Tab>", "<Plug>(cokeline-focus-prev)", { silent = true })

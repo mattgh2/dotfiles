@@ -7,11 +7,11 @@ return {
     settings = {
         pylsp = {
             plugins = {
-                pyflakes = { enabled = true },
-
-                pycodestyle = {
-                    ignore = { 'E501' },
-                },
+                -- black = { enabled = true },
+                -- pyflakes = { enabled = true },
+                -- pycodestyle = {
+                --     ignore = { 'E501' },
+                -- },
 
             },
         },
